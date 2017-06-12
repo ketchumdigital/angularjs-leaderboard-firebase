@@ -2,13 +2,13 @@ var app = angular.module('leaderboard', []);
 
 app.controller('MainCtrl', function (ContestantsService) {
     var main = this;
-    main.newContestant = {lane: '', name: '', score: ''};
+    main.newContestant = {lane: '', name: '', score: '', color: ''};
     main.currentContestant = null;
     main.contestants = ContestantsService.getContestants();
 
     main.addContestant = function () {
         ContestantsService.addContestant(angular.copy(main.newContestant));
-        main.newContestant = {lane: '', name: '', score: ''};
+        main.newContestant = {lane: '', name: '', score: '', color: ''};
     };
 
     main.updateContestant = function (contestant) {
@@ -33,9 +33,9 @@ app.controller('MainCtrl', function (ContestantsService) {
 app.service('ContestantsService', function () {
     var service = this;
     var contestants = [
-        {id: 1, lane: 1, name: 'Contestant 01', score: '10'},
-        {id: 2, lane: 2, name: 'Contestant 02', score: '15'},
-        {id: 3, lane: 3, name: 'Contestant 03', score: '20'}
+        {id: 1, lane: 1, name: 'Contestant 01', score: '10', color: '#ff0000'},
+        {id: 2, lane: 2, name: 'Contestant 02', score: '15', color: '#00ff00'},
+        {id: 3, lane: 3, name: 'Contestant 03', score: '20', color: '#0000ff'}
     ];
 
     service.getContestants = function () {

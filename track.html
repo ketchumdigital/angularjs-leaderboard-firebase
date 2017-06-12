@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="leaderboard">
+    <head>
+        <title>The Digital Derby</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <!-- Bootstrap -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/leaderboard.css" rel="stylesheet" />
+        <link href="css/racetrack.css" rel="stylesheet" />
+    </head>
+    <body>
+
+
+
+        <div class="container" ng-controller="MainCtrl as main">
+            <h3>The Digital Derby</h3>
+            <div class="racetrack-container container-fluid">
+                <div class="racetrack">
+                    <div ng-repeat="contestant in main.contestants | orderBy:'lane' " class="horse">
+                        <div>{{contestant.lane}}</div>
+                        <div>{{contestant.name}}</div>
+                        <div>{{contestant.color}}</div>
+                        <div>{{contestant.score}}</div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="well">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <!--th>Lane</th-->
+                        <th>Contestant</th>
+                        <th>Horse Color</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="contestant in main.contestants | orderBy:'-score' ">
+                        <!--td>{{contestant.lane}}</td-->
+                        <td>{{contestant.name}}</td>
+                        <td>
+                            <svg width="20" height="20">
+                              <rect width="20" height="20" fill="{{contestant.color}}"/>
+                            </svg>
+                        </td>
+                        <td>{{contestant.score}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+        <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+        <script src="http://code.createjs.com/createjs-2014.12.12.min.js"></script>
+
+        <script src="js/leader-board.js"></script>
+    </body>
+</html>
