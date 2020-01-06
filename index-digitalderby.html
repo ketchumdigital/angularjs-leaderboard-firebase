@@ -1,36 +1,48 @@
 <!DOCTYPE html>
-<html class="full" lang="en" ng-app="leaderboard">
+<html class="full" lang="en"  ng-app="leaderboard">
 <!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cliff Hangers</title>
+
+    <title>Digital Derby</title>
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="css/the-big-picture.css" rel="stylesheet">
-    <link href="css/leaderboard.css" rel="stylesheet" />
-    <link href="css/cliffhangers.css" rel="stylesheet" />
+
+     <link href="css/leaderboard.css" rel="stylesheet" />
+     <link href="css/racetrack.css" rel="stylesheet" />
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body>
     <!-- Page Content -->
-    <div class="container-fluid" ng-controller="MainCtrl as main">
-        <h1>Digital Derby</h1>
+    <div class="container" ng-controller="MainCtrl as main">
+                <h1>Digital Derby</h1>
         <div class="row">
             <div class="col-md-8 col-sm-12">
+
                 <div class="racetrack-container">
+                    <div class="racetrack-topgrass"></div>
                     <div class="racetrack-lanes">
+                                          
                         <div ng-repeat="contestant in main.contestants | orderBy:'lane' " class="horselane" style="
                             top: {{ (contestant.lane) * 45}}px; ">
                             <!--div class="racetrack-divider"></div-->
@@ -38,64 +50,79 @@
                                     left: {{contestant.score}}%;
                                     z-index:{{contestant.lane}}">
                                 <div class="horse">
-                                    <p>{{contestant.name}}</p>
+                                   <p>{{contestant.name}}</p>
                                     <div class="horse-wrapper">
                                         <svg width="80" height="80">
                                             <defs>
                                                 <mask id="horseMask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" transform="scale(1)">
-                                                    <image width="80px" height="80px" xlink:href="/img/horse-color.png" />
+                                                    <image width="80px" height="80px" xlink:href="/img/horse-color.png"/>
                                                 </mask>
                                             </defs>
-                                            <rect width="80" height="80" fill="{{contestant.color}}" mask="url(#horseMask)" />
+                                            <rect width="80" height="80" fill="{{contestant.color}}" mask="url(#horseMask)"/>
                                         </svg>
                                         <!--img src="/img/horse-color.png" height="80px" width="80px" class="horse-overly" /-->
                                     </div>
+                                       
                                 </div>
                             </div>
+                            
                         </div>
+
+
                     </div>
+                    <!--div class="racetrack-divider"></div-->
+                    <div class="racetrack-bottomgrass"></div>
                 </div>
             </div>
+
             <div class="col-md-4 col-sm-12">
                 <!--p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, iusto, unde, sunt incidunt id sapiente rerum soluta voluptate harum veniam fuga odit ea pariatur vel eaque sint sequi tenetur eligendi.</p-->
+
                 <div class="well">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <!--th>Lane</th-->
-                                <th>Contestant</th>
-                                <th>Color</th>
-                                <th>Score</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="contestant in main.contestants | orderBy:'-score' ">
-                                <!--td>{{contestant.lane}}</td-->
-                                <td>{{contestant.name}}</td>
-                                <td>
-                                    <svg width="20" height="20">
-                                        <rect width="20" height="20" fill="{{contestant.color}}" />
-                                    </svg>
-                                </td>
-                                <td>{{contestant.score}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <!--th>Lane</th-->
+                        <th>Contestant</th>
+                        <th>Color</th>
+                        <th>Score</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="contestant in main.contestants | orderBy:'-score' ">
+                        <!--td>{{contestant.lane}}</td-->
+                        <td>{{contestant.name}}</td>
+                        <td>
+                            <svg width="20" height="20">
+                              <rect width="20" height="20" fill="{{contestant.color}}"/>
+                            </svg>
+                        </td>
+                        <td>{{contestant.score}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
             </div>
         </div>
         <!-- /.row -->
     </div>
     <!-- /.container -->
+
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
+
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
-    <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-    <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
-    <script src="js/leader-board.js"></script>
+
+        <script src="//cdnjs.cloudflare.com/ajax/libs/sugar/1.4.1/sugar-full.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+        <script src="//cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+        <script src="//cdn.firebase.com/libs/angularfire/1.2.0/angularfire.min.js"></script>
+
+        <script src="js/leader-board.js"></script>
+
 </body>
 
 </html>
